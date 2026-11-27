@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 public class CourseReader {
+	static Map<String, List<Course>> courseCatalog;
+	
 	
 	public static final Map<String, String> SUBJECT_CODES = Map.of(
 	        "Computer Systems Engineering", "CSYE",
@@ -20,9 +22,11 @@ public class CourseReader {
 
     public static void main(String[] args) throws IOException {
     	// Read CSV files with courses for each subject and populate the course catalog
-        Map<String, List<Course>> courseCatalog = new CourseReader().read(
+    		courseCatalog = new CourseReader().read(
                 Path.of("csye_courses.csv"),
-                Path.of("info_courses.csv"));
+                Path.of("info_courses.csv"),
+                Path.of("damg_courses.csv"),
+                Path.of("tele_courses.csv"));
 
         // Display the course catalog
         for (Map.Entry<String, List<Course>> entry : courseCatalog.entrySet()) {
